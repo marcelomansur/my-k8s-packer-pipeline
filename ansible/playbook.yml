@@ -1,0 +1,14 @@
+- name: Configure EC2 instance
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Run apt-get update
+      ansible.builtin.apt:
+        update_cache: yes
+
+- name: Provision Image
+  hosts: all
+  become: true
+  roles:
+    - nginxinc.nginx

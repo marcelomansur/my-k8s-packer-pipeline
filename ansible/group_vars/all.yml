@@ -1,0 +1,10 @@
+---
+# nginx vars
+nginx_enable: true
+nginx_install: true
+nginx_start: true
+nginx_type: opensource
+# nginx_version: "=nginx-1.20.0-1.el7.ngx"
+nginx_selinux: true
+nginx_selinux_enforcing: true
+nginx_selinux_tcp_ports: 80

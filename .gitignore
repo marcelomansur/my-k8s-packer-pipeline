@@ -6,3 +6,9 @@ crash.log
 
 # For built boxes
 *.box
+
+# Ansible roles
+ansible/roles
+
+# .env files
+.packer.env
