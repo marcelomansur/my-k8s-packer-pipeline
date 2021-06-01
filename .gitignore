@@ -12,3 +12,6 @@ ansible/roles
 
 # .env files
 .packer.env
+
+# user variables
+variables.auto.pkrvars.hcl
