@@ -17,10 +17,10 @@ hp: ## This help.
 .DEFAT_GOAL := help
 
 packer-init: ## Run command 'packer init'
-	docker run --rm -v $$PWD:/workspace -w /workspace --env-file $$PWD/.packer.env -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) init .
+	docker run --rm -v $$PWD:/workspace -w /workspace -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) init .
 packer-fmt: ## Run command 'packer fmt'
-	docker run --rm -v $$PWD:/workspace -w /workspace --env-file $$PWD/.packer.env -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) fmt .
+	docker run --rm -v $$PWD:/workspace -w /workspace -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) fmt .
 packer-validate: ## Run command 'packer validate'
-	docker run --rm -v $$PWD:/workspace -w /workspace --env-file $$PWD/.packer.env -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) validate .
+	docker run --rm -v $$PWD:/workspace -w /workspace -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) validate .
 packer-build: ## Run command 'packer build'
 	docker run --rm -v $$PWD:/workspace -w /workspace --env-file $$PWD/.packer.env -e PACKER_PLUGIN_PATH=/workspace/.packer.d/plugins $(DOCKER_IMAGE) build .
