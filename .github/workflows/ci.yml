@@ -13,7 +13,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # validate templates
+      - name: Create user vars file
+        run: |
+          echo "instance_type = \"t2.micro\"" >> variables.auto.pkrvars.hcl
+          echo "ssh_username  = \"ubuntu\"" >> variables.auto.pkrvars.hcl
+          echo "ami_name      = \"base-iac-ubuntu-{{timestamp}}\"" >> variables.auto.pkrvars.hcl
+          echo "ami_tags      = {\"version\":\"${GITHUB_REF#refs/*/}\"}" >> variables.auto.pkrvars.hcl
+
       - name: Validate Template
         run: |
           make packer-fmt
