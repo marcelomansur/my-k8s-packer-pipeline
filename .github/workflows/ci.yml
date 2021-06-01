@@ -35,9 +35,12 @@ jobs:
           echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .packer.env
           echo PACKER_LOG=1 >> .packer.env
 
-      - name: Create ami tag
+      - name: Create user vars file
         run: |
-          echo 'ami_tags = {"version":"${GITHUB_REF#refs/*/}"}' >> variables.auto.pkrvars.hcl
+          echo "instance_type = \"t2.micro\"" >> variables.auto.pkrvars.hcl
+          echo "ssh_username  = \"ubuntu\"" >> variables.auto.pkrvars.hcl
+          echo "ami_name      = \"base-iac-ubuntu-{{timestamp}}\"" >> variables.auto.pkrvars.hcl
+          echo "ami_tags      = {\"version\":\"${GITHUB_REF#refs/*/}\"}" >> variables.auto.pkrvars.hcl
           make packer-validate
 
       # build artifact
