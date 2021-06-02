@@ -45,10 +45,9 @@ jobs:
         run: |
           echo "instance_type = \"t2.micro\"" >> variables.auto.pkrvars.hcl
           echo "ssh_username  = \"ubuntu\"" >> variables.auto.pkrvars.hcl
-          echo "ami_name      = \"base-iac-ubuntu-{{timestamp}}\"" >> variables.auto.pkrvars.hcl
+          echo "ami_name      = \"iac-ubuntu-${GITHUB_REF#refs/*/}-{{timestamp}}\"" >> variables.auto.pkrvars.hcl
           echo "ami_tags      = {\"version\":\"${GITHUB_REF#refs/*/}\"}" >> variables.auto.pkrvars.hcl
           make packer-validate
 
-      # build artifact
       - name: Build Artifact
         run: make packer-build
