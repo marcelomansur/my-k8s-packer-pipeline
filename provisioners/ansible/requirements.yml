@@ -1,0 +1,4 @@
+---
+- src: https://github.com/marcelomansur/my-k8s-ansible-role.git
+  version: main
+  name: k8s-ansible-role

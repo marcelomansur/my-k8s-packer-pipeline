@@ -8,10 +8,13 @@ crash.log
 *.box
 
 # Ansible roles
-ansible/roles
+provisioners/ansible/roles
 
 # .env files
 .packer.env
 
 # user variables
 variables.auto.pkrvars.hcl
+
+# Dockerfile
+Dockerfile
